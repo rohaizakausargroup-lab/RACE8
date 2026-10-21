@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101d3a">
+<title>RACE8 AI — Stay in the Race. Finish It.</title>
+<style>
+:root{--navy:#101d3a;--navy2:#17294d;--blue:#2563eb;--yellow:#f4d477;--ink:#172033;--muted:#657089;--line:#dce3ef;--bg:#f4f7fc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+header{background:linear-gradient(130deg,#101d3a,#17396e);color:white;padding:26px 18px 24px;border-bottom:5px solid var(--yellow);position:relative;overflow:hidden}
+header:after{content:"8";position:absolute;right:12px;top:-50px;font-size:220px;font-weight:900;color:#ffffff0b;line-height:1}
+.wrap{max-width:980px;margin:auto;position:relative;z-index:1}
+.eyebrow{color:var(--yellow);font-weight:800;letter-spacing:.18em;font-size:.75rem}
+h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.02;margin:8px 0;color:var(--yellow);letter-spacing:-.04em}
+.tagline{font-size:clamp(1rem,3.4vw,1.25rem);font-weight:850;letter-spacing:.03em;margin:10px 0 4px}
+.sub{color:#dce8ff;margin:0;font-size:.92rem}
+main{max-width:980px;margin:20px auto;padding:0 14px 42px}
+.notice{background:#fff8df;border:1px solid #f1d67e;border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:.9rem}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0}
+.tab{border:1px solid var(--line);background:white;border-radius:12px;padding:12px 9px;font-weight:800;color:var(--navy);cursor:pointer;text-align:center}
+.tab.active{background:var(--navy);color:white;border-color:var(--navy);box-shadow:0 5px 14px #101d3a20}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 8px 24px #10234b0a}
+.panel.active{display:block}
+h2{margin:0 0 4px;font-size:1.35rem;color:var(--navy)}.hint{color:var(--muted);font-size:.9rem;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}
+label{font-size:.88rem;font-weight:750;color:#293650}
+input,select,textarea{font:inherit;width:100%;border:1px solid #cbd5e5;border-radius:10px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb1b}
+textarea{min-height:92px;resize:vertical}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+button{font:inherit;font-weight:800;border:0;border-radius:10px;padding:11px 15px;cursor:pointer}
+.primary{background:var(--blue);color:white}.secondary{background:#e9eef8;color:var(--navy)}.dark{background:var(--navy);color:white}
+.output-wrap{margin-top:18px;display:none}.output-wrap.show{display:block}
+.output-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.output-head h3{margin:0;color:var(--navy)}#output{min-height:260px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem;background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:14px;overflow-wrap:anywhere}
+.small{font-size:.8rem;color:var(--muted)}.pill{display:inline-block;background:#eaf0ff;color:#234b9a;padding:4px 8px;border-radius:999px;font-size:.76rem;font-weight:800;margin:3px 4px 0 0}
+footer{text-align:center;padding:20px;color:#66728a;font-size:.82rem}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:14px}.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.tab{font-size:.86rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="eyebrow">AI CONTENT CREATION PROMPTER</div>
+  <h1>RACE8 AI</h1>
+  <div class="tagline">STAY IN THE RACE. FINISH IT.</div>
+  <p class="sub">An AI Content Creation Tool by Rohaiza &amp; Shahidah</p>
+</div></header>
+<main>
+  <div class="notice"><strong>🏁 Penting:</strong> RACE8 AI membina <em>prompt</em> untuk digunakan dalam ChatGPT, Gemini, Canva atau alat AI pilihan anda. Ia tidak menjana imej/video secara automatik. Untuk kempen, pilih <strong>Campaign 8 Minggu</strong> — bukan Image Studio.</div>
+  <div class="tabs" role="tablist" aria-label="Mod prompter">
+    <button class="tab active" data-tab="campaign">🏁 Campaign 8 Minggu</button>
+    <button class="tab" data-tab="copy">✍️ Copywriting</button>
+    <button class="tab" data-tab="image">🎨 Image Studio</button>
+    <button class="tab" data-tab="video">🎬 Video Studio</button>
+  </div>
+
+  <section class="panel active" id="campaign">
+    <h2>Campaign 8 Minggu</h2>
+    <p class="hint">Bina pelan kandungan 56 hari × 3 kandungan sehari = 168 idea. Modul ini meminta AI menghasilkan jadual dan teks, bukannya poster sahaja.</p>
+    <div class="grid">
+      <div class="field"><label for="campaignName">Nama kempen</label><input id="campaignName" value="Misi 8 Minggu — Stay in the Race"></div>
+      <div class="field"><label for="brand">Jenama / branding</label><input id="brand" value="Kakyong Pewarisan"></div>
+      <div class="field"><label for="audience">Sasaran audiens</label><input id="audience" value="Orang awam, keluarga dan pemilik rumah di Malaysia"></div>
+      <div class="field"><label for="platform">Platform utama</label><select id="platform"><option>Facebook</option><option>Instagram</option><option>TikTok</option><option>Facebook dan Instagram</option><option>Pelbagai platform</option></select></div>
+      <div class="field"><label for="language">Bahasa</label><select id="language"><option>Bahasa Melayu Malaysia</option><option>Bahasa Melayu santai</option><option>Bahasa Melayu profesional</option><option>Bahasa Melayu dan English</option></select></div>
+      <div class="field"><label for="daily">Kekerapan kandungan sehari</label><select id="daily"><option value="3">3 kandungan sehari</option><option value="2">2 kandungan sehari</option><option value="1">1 kandungan sehari</option></select></div>
+      <div class="field full"><label for="topics">Topik / objektif kempen</label><textarea id="topics">Pewarisan harta Islam: hibah, wasiat, faraid, pusaka; pendidikan kewangan keluarga; kesedaran dan jemputan konsultasi.</textarea></div>
+      <div class="field full"><label for="cta">Seruan tindakan (CTA)</label><input id="cta" value="Hubungi saya untuk sesi penerangan atau konsultasi"></div>
+      <div class="field full"><label for="campaignNotes">Arahan tambahan (pilihan)</label><textarea id="campaignNotes" placeholder="Contoh: elakkan dakwaan mutlak, masukkan hook kuat, variasikan format dan jangan ulang topik."></textarea></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="generateCampaign()">Jana Prompt Jadual Kempen</button><button class="secondary" onclick="fillCampaignExample()">Isi contoh</button></div>
+  </section>
+
+  <section class="panel" id="copy">
+    <h2>Copywriting Studio</h2><p class="hint">Untuk caption, storytelling, iklan, WhatsApp, headline, carousel atau follow-up.</p>
+    <div class="grid">
+      <div class="field"><label for="copyType">Jenis copywriting</label><select id="copyType"><option>Caption media sosial</option><option>WhatsApp follow-up</option><option>Storytelling</option><option>Headline / hook</option><option>Iklan promosi</option><option>Skrip carousel</option><option>Jemputan acara</option></select></div>
+      <div class="field"><label for="copyPlatform">Platform</label><select id="copyPlatform"><option>Facebook</option><option>Instagram</option><option>TikTok</option><option>WhatsApp</option><option>Facebook dan Instagram</option></select></div>
+      <div class="field"><label for="copyAudience">Sasaran audiens</label><input id="copyAudience" value="Orang awam di Malaysia"></div>
+      <div class="field"><label for="copyTone">Nada</label><select id="copyTone"><option>Mesra dan profesional</option><option>Santai dan relatable</option><option>Meyakinkan dan berempati</option><option>Tegas dan bertenaga</option><option>Eksklusif dan premium</option></select></div>
+      <div class="field full"><label for="copyTopic">Topik / mesej utama</label><textarea id="copyTopic" placeholder="Masukkan topik yang mahu ditulis..."></textarea></div>
+      <div class="field full"><label for="copyCTA">CTA</label><input id="copyCTA" value="Hubungi saya untuk maklumat lanjut"></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="generateCopy()">Jana Prompt Copywriting</button></div>
+  </section>
+
+  <section class="panel" id="image">
+    <h2>Image Studio</h2><p class="hint">Gunakan modul ini hanya apabila anda memang mahu menghasilkan poster atau visual.</p>
+    <div class="grid">
+      <div class="field"><label for="imageType">Jenis visual</label><select id="imageType"><option>Poster promosi</option><option>Infografik pendidikan</option><option>Poster teaser</option><option>Carousel pendidikan</option><option>Poster acara</option></select></div>
+      <div class="field"><label for="ratio">Nisbah visual</label><select id="ratio"><option>4:5 — post media sosial</option><option>1:1 — square</option><option>9:16 — story / reels</option><option>16:9 — landscape</option></select></div>
+      <div class="field"><label for="imageAudience">Sasaran</label><input id="imageAudience" value="Orang awam"></div>
+      <div class="field"><label for="imageStyle">Gaya visual</label><select id="imageStyle"><option>Mesra dan profesional</option><option>Korporat premium</option><option>Moden dan minimal</option><option>Ceria dan bertenaga</option><option>Futuristik racing biru-kuning</option></select></div>
+      <div class="field full"><label for="imageTopic">Topik / tajuk poster</label><textarea id="imageTopic" placeholder="Contoh: Hibah dan Wasiat — apa bezanya?"></textarea></div>
+      <div class="field full"><label for="imageText">Teks wajib pada visual</label><textarea id="imageText" placeholder="Tajuk, isi penting, tarikh, tempat, CTA..."></textarea></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="generateImage()">Jana Prompt Visual</button></div>
+  </section>
+
+  <section class="panel" id="video">
+    <h2>Video Studio</h2><p class="hint">Hasilkan prompt untuk skrip dan video AI. Nyatakan sama ada mahu video senyap tanpa voiceover.</p>
+    <div class="grid">
+      <div class="field"><label for="videoLength">Durasi</label><select id="videoLength"><option>15 saat</option><option>30 saat</option><option>45 saat</option><option>60 saat</option></select></div>
+      <div class="field"><label for="videoStyle">Gaya video</label><select id="videoStyle"><option>Photorealistic cinematic</option><option>Talking-head profesional</option><option>Animasi pendidikan</option><option>Futuristik racing</option><option>Reels gaya UGC</option></select></div>
+      <div class="field"><label for="audio">Audio</label><select id="audio"><option>Tanpa muzik, tanpa voiceover</option><option>Voiceover Bahasa Melayu</option><option>Dialog watak</option><option>Muzik latar sahaja</option></select></div>
+      <div class="field"><label for="subtitles">Sari kata</label><select id="subtitles"><option>Sari kata Bahasa Melayu</option><option>Tanpa sari kata</option><option>Sari kata Bahasa Melayu dan English</option></select></div>
+      <div class="field full"><label for="videoTopic">Topik / jalan cerita</label><textarea id="videoTopic" placeholder="Apa yang berlaku dalam video?"></textarea></div>
+      <div class="field full"><label for="videoCTA">CTA / penutup</label><input id="videoCTA" value="Hubungi saya untuk sesi penerangan"></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="generateVideo()">Jana Prompt Video</button></div>
+  </section>
+
+  <div class="output-wrap" id="outputWrap">
+    <div class="output-head"><h3>Prompt anda</h3><div class="actions" style="margin-top:0"><button class="secondary" onclick="copyOutput()">📋 Salin Prompt</button><button class="dark" onclick="openChatGPT()">Buka ChatGPT ↗</button></div></div>
+    <div id="output" aria-live="polite"></div>
+    <p class="small">Cara guna: tekan <strong>Salin Prompt</strong> untuk menyalin teks, kemudian tekan <strong>Buka ChatGPT</strong> dan tampal prompt dalam ruang chat. Anda juga boleh tampal dalam Gemini atau alat AI pilihan anda.</p>
+  </div>
+</main>
+<footer>RACE8 AI · STAY IN THE RACE. FINISH IT. · Created by Rohaiza &amp; Shahidah</footer>
+<script>
+const $ = id => document.getElementById(id);
+document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === btn));
+  document.querySelectorAll('.panel').forEach(x => x.classList.toggle('active', x.id === btn.dataset.tab));
+  $('outputWrap').classList.remove('show');
+}));
+function val(id){return $(id).value.trim()}
+function showPrompt(text){$('output').textContent=text;$('outputWrap').classList.add('show');$('outputWrap').scrollIntoView({behavior:'smooth',block:'start'})}
+function generateCampaign(){
+ const days=56, daily=Number(val('daily')), total=days*daily;
+ const p=`ANDA IALAH STRATEGIS KANDUNGAN DIGITAL DAN PERANCANG KEMPEN AI.
+
+TUGAS UTAMA: Bina JADUAL KANDUNGAN LENGKAP untuk kempen "${val('campaignName')}" selama 8 minggu.
+PENTING: Saya meminta PELAN DAN TEKS KANDUNGAN, BUKAN menjana gambar sahaja. Jangan mulakan dengan prompt imej. Hasilkan kandungan bertulis terus dalam jawapan.
+
+BUTIRAN KEMPEN
+- Tempoh: 8 minggu / 56 hari
+- Kekerapan: ${daily} kandungan sehari
+- Jumlah sasaran: ${total} kandungan
+- Jenama: ${val('brand')}
+- Sasaran audiens: ${val('audience')}
+- Platform: ${val('platform')}
+- Bahasa: ${val('language')}
+- Topik dan objektif: ${val('topics')}
+- CTA utama: ${val('cta')}
+- Arahan tambahan: ${val('campaignNotes')||'Pastikan kandungan pelbagai, praktikal, tepat dan tidak berulang.'}
+
+FORMAT OUTPUT WAJIB
+1. Mulakan dengan strategi ringkas dan objektif bagi setiap minggu.
+2. Bina jadual 8 minggu penuh, Hari 1 hingga Hari 56. Jangan berhenti pada contoh beberapa hari sahaja.
+3. Untuk SETIAP hari, senaraikan ${daily} kandungan berbeza. Jika 3 sehari, gunakan:
+   - Kandungan 1: Pendidikan / awareness
+   - Kandungan 2: Engagement / storytelling / mitos dan fakta
+   - Kandungan 3: Tindakan / CTA / video pendek / soalan interaktif
+4. Bagi setiap kandungan, sediakan:
+   - Hari dan minggu
+   - Platform dan format (caption, carousel, poster, reels/video, story atau WhatsApp)
+   - Tajuk / hook
+   - Caption atau skrip penuh yang boleh terus digunakan
+   - CTA
+   - Idea visual ringkas
+   - Jika sesuai, prompt visual berasingan selepas teks kandungan — jangan gantikan caption dengan prompt visual.
+5. Susun output mengikut minggu dan hari. Pastikan jumlah keseluruhan tepat ${total} kandungan.
+6. Elakkan mengulang hook, topik atau CTA secara berlebihan. Wujudkan aliran kandungan yang berkembang dari awareness kepada kepercayaan, pertimbangan dan tindakan.
+7. Gunakan Bahasa Melayu Malaysia yang semula jadi. Untuk isu pewarisan Islam, gunakan penerangan bertanggungjawab; jangan beri jaminan mutlak atau mereka-reka fakta undang-undang.
+8. Jika jawapan terlalu panjang untuk satu respons, keluarkan Minggu 1–2 dahulu dengan lengkap dan nyatakan julat minggu seterusnya untuk disambung. Jangan tukar tugas kepada penjanaan imej.
+9. Akhiri dengan checklist pelaksanaan mingguan dan cara mengukur prestasi kandungan.
+
+Mulakan sekarang dengan strategi kempen dan jadual lengkap. Keutamaan nombor satu ialah KALENDAR + COPYWRITING untuk ${total} kandungan, bukan poster sahaja.`;
+ showPrompt(p);
+}
+function fillCampaignExample(){$('campaignName').value='Misi 8 Minggu — Lari 8KM… Dah Daftar?';$('topics').value='Kempen larian 8KM: motivasi, persediaan, konsistensi latihan, keselamatan, komuniti, kemajuan mingguan dan ajakan mendaftar.';$('cta').value='Dah daftar? Komen atau kongsi perkembangan anda!';}
+function generateCopy(){
+ if(!val('copyTopic')){alert('Sila isi topik atau mesej utama dahulu.');return}
+ showPrompt(`ANDA IALAH COPYWRITER PROFESIONAL MALAYSIA.
+
+Hasilkan ${val('copyType')} untuk topik: "${val('copyTopic')}".
+
+Sasaran: ${val('copyAudience')}
+Platform: ${val('copyPlatform')}
+Bahasa: Bahasa Melayu Malaysia
+Nada: ${val('copyTone')}
+CTA: ${val('copyCTA')}
+Branding jika sesuai: ${val('brand')}
+
+Arahan:
+- Berikan hasil siap guna, bukan arahan untuk menghasilkan hasil.
+- Mulakan dengan hook yang menarik dan relevan.
+- Gunakan bahasa semula jadi, jelas dan mudah difahami.
+- Sertakan struktur yang sesuai dengan format pilihan.
+- Elakkan dakwaan palsu, tekanan melampau atau janji yang tidak boleh disahkan.
+- Berikan satu versi utama dan dua pilihan hook alternatif.
+- Akhiri dengan CTA yang jelas.`);
+}
+function generateImage(){
+ if(!val('imageTopic')){alert('Sila isi topik atau tajuk visual dahulu.');return}
+ showPrompt(`ANDA IALAH ART DIRECTOR DAN PEREKA VISUAL PROFESIONAL.
+
+Hasilkan konsep visual untuk: "${val('imageTopic')}"
+Jenis: ${val('imageType')}
+Sasaran: ${val('imageAudience')}
+Platform: ${val('platform')}
+Nisbah: ${val('ratio')}
+Gaya: ${val('imageStyle')}
+Branding: ${val('brand')}
+Teks wajib: ${val('imageText')||'Cipta hierarki teks yang jelas berdasarkan tajuk.'}
+
+Sediakan arahan visual terperinci untuk alat AI imej. Pastikan ejaan Bahasa Melayu tepat, susun atur mudah dibaca pada telefon, kontras tinggi dan jangan tambah fakta yang tidak diberikan. Jika teks terlalu banyak, ringkaskan secara bertanggungjawab tanpa mengubah maksud.`);
+}
+function generateVideo(){
+ if(!val('videoTopic')){alert('Sila isi topik atau jalan cerita dahulu.');return}
+ showPrompt(`ANDA IALAH PENGARAH VIDEO DAN PENULIS SKRIP AI PROFESIONAL.
+
+Bina konsep dan prompt video untuk topik: "${val('videoTopic')}"
+Durasi: ${val('videoLength')}
+Gaya: ${val('videoStyle')}
+Audio: ${val('audio')}
+Sari kata: ${val('subtitles')}
+Sasaran: ${val('audience')}
+Branding: ${val('brand')}
+CTA: ${val('videoCTA')}
+
+Sediakan:
+1. Skrip mengikut cap masa.
+2. Arahan visual, watak, lokasi, pencahayaan, kamera dan pergerakan.
+3. Teks pada skrin dan sari kata jika diminta.
+4. Prompt akhir yang boleh disalin ke alat video AI.
+5. Kekalkan rupa watak dan kesinambungan visual antara babak.
+Jika audio dipilih "Tanpa muzik, tanpa voiceover", nyatakan dengan jelas: NO MUSIC, NO VOICEOVER, NO DIALOGUE; visual dan teks pada skrin sahaja.`);
+}
+async function copyOutput(){
+ const text=$('output').textContent;
+ try{
+   await navigator.clipboard.writeText(text);
+   alert('Prompt berjaya disalin! Sekarang tekan “Buka ChatGPT” dan tampal prompt.');
+ } catch(e){
+   const temp=document.createElement('textarea');
+   temp.value=text;temp.setAttribute('readonly','');temp.style.position='fixed';temp.style.opacity='0';
+   document.body.appendChild(temp);temp.select();
+   let copied=false;try{copied=document.execCommand('copy')}catch(err){}
+   document.body.removeChild(temp);
+   if(copied){alert('Prompt berjaya disalin! Sekarang tekan “Buka ChatGPT” dan tampal prompt.');}
+   else{
+     alert('Salinan automatik disekat oleh pelayar. Sila pilih dan salin teks prompt secara manual.');
+     const range=document.createRange();range.selectNodeContents($('output'));
+     const sel=window.getSelection();sel.removeAllRanges();sel.addRange(range);
+   }
+ }
+}
+function openChatGPT(){window.open('https://chatgpt.com/','_blank','noopener,noreferrer')}
+</script>
+</body>
+</html>
